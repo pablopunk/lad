@@ -24,3 +24,21 @@ block body
           i.fa.fa-clipboard
           = ' '
           = t('Copy')
+    .row
+      .col-md-6
+        hr
+        h2= t('Account Information')
+        form.ajax-form(action=`/${locale}/my-account`, method="POST")
+          input(type="hidden", name="_csrf", value=ctx.csrf)
+          .form-group
+            label(for="email")
+            = t('Email')
+            input#email.form-control(required="required", name="email", type="email", value=user.email)
+          .form-group
+            label(for="name")
+            = t('Name')
+            input#name.form-control(required="required", name="name", type="text", value=user.display_name)
+          button.btn.btn-primary(type="submit", data-toggle="tooltip", data-placement="bottom", title=t(`Save account info`))
+            i.fa.fa-floppy-o
+            = ' '
+            = t('Save')
